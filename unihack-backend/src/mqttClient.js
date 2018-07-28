@@ -56,7 +56,8 @@ var madgwick2 = new AHRS({
   ki: 0
 });
 
-let lastTimestamp = null;
+let lastTimestamp1 = null;
+let lastTimestamp2 = null;
 
 function toRadians(angle) {
   return angle * (Math.PI / 180);
@@ -120,16 +121,17 @@ function MqttClient(deviceStore, config) {
       //Add sensor group to payload
       data.sensor = extras[0];
 
-      if (lastTimestamp == null) {
-        lastTimestamp = data.timestamp;
-      }
-
-      let deltaTime = (data.timestamp - lastTimestamp) / 1000;
       if (data != null && data.gyro != null && data.gyro.x != null) {
         let euler;
         let quat;
 
         if (deviceId == "98072d27a984") {
+          if (lastTimestamp1 == null) {
+            lastTimestamp1 = data.timestamp;
+          }
+
+          let deltaTime = (data.timestamp - lastTimestamp1) / 1000;
+
           madgwick1.update(
             toRadians(data.gyro.x.degPerSecond),
             toRadians(data.gyro.y.degPerSecond),
@@ -143,9 +145,17 @@ function MqttClient(deviceStore, config) {
             (deltaTimeSec = deltaTime)
           );
 
+          lastTimestamp1 = data.timestamp;
+
           euler = madgwick1.getEulerAngles();
           quat = madgwick1.getQuaternion();
         } else {
+          if (lastTimestamp2 == null) {
+            lastTimestamp2 = data.timestamp;
+          }
+
+          let deltaTime = (data.timestamp - lastTimestamp2) / 1000;
+
           madgwick2.update(
             toRadians(data.gyro.x.degPerSecond),
             toRadians(data.gyro.y.degPerSecond),
@@ -159,14 +169,14 @@ function MqttClient(deviceStore, config) {
             (deltaTimeSec = deltaTime)
           );
 
+          lastTimestamp2 = data.timestamp;
+
           euler = madgwick2.getEulerAngles();
           quat = madgwick2.getQuaternion();
         }
 
         client.publish("euler/" + deviceId, JSON.stringify(euler));
         client.publish("quat/" + deviceId, JSON.stringify(quat));
-
-        lastTimestamp = data.timestamp;
       }
       //
 
