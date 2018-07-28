@@ -1,68 +1,54 @@
 {
-  "clientId": "Bosch-UNIHACK-Gateway-0",
-  "scanInterval": 5000,
-  "logLevel": 3,
-  "capacity": 10,
+    "clientId": "Bosch-UNIHACK-Gateway-0",
+    "scanInterval": 5000,
+    "logLevel": 3,
+    "capacity": 10,
 
-  "whitelist": [
-    "98072d35a705",
-    "98072d3a2784",
-    "98072d356603",
-    "98072d27a984",
-    "98072d26ba02",
-    "98072d356b04",
-    "98072d35a080",
-    "98072d26b785",
-    "98072d26bf01",
-    "98072d3b1a82",
-    "68c90b069207",
-    "c4be8471a302",
-    "68c90b17b280"
-  ],
+    "whitelist": ["98072d27a984"],
 
-  "http": {
-    "https": false,
-    "host": "localhost",
-    "port": 3000,
-    "username": "admin",
-    "password": "secretpassword",
-    "timeout": 2000
-  },
+    "http": {
+        "https": false,
+        "host": "localhost",
+        "port": 3000,
+        "username": "admin",
+        "password": "secretpassword",
+        "timeout": 2000
+    },
 
-  "mqtt": {
-    "host": "localhost",
-    "port": 1883,
-    "username": "admin",
-    "password": "secretpassword"
-  },
+    "mqtt": {
+        "host": "localhost",
+        "port": 1883,
+        "username": "admin",
+        "password": "secretpassword"
+    },
 
-  "sensorTag": {
-    "discoveryTimeout": 6000,
+    "sensorTag": {
+        "discoveryTimeout": 6000,
 
-    "defaultConfig": {
-      "light": {
-        "enabled": true,
-        "period": 1000
-      },
-      "humidity": {
-        "enabled": true,
-        "period": 500
-      },
-      "pressure": {
-        "enabled": true,
-        "period": 500
-      },
-      "movement": {
-        "enabled": true,
-        "period": 500
-      },
-      "outputs": {
-        "led": {
-          "red": true,
-          "green": true
-        },
-        "buzzer": false
-      }
+        "defaultConfig": {
+            "light": {
+                "enabled": true,
+                "period": 1000
+            },
+            "humidity": {
+                "enabled": true,
+                "period": 500
+            },
+            "pressure": {
+                "enabled": true,
+                "period": 500
+            },
+            "movement": {
+                "enabled": true,
+                "period": 500
+            },
+            "outputs": {
+                "led": {
+                    "red": true,
+                    "green": true
+                },
+                "buzzer": false
+            }
+        }
     }
-  }
 }
