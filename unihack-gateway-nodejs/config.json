@@ -27,20 +27,20 @@
 
         "defaultConfig": {
             "light": {
-                "enabled": true,
+                "enabled": false,
                 "period": 1000
             },
             "humidity": {
-                "enabled": true,
+                "enabled": false,
                 "period": 500
             },
             "pressure": {
-                "enabled": true,
+                "enabled": false,
                 "period": 500
             },
             "movement": {
                 "enabled": true,
-                "period": 500
+                "period": 100
             },
             "outputs": {
                 "led": {
