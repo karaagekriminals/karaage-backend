@@ -4,7 +4,7 @@
   "logLevel": 3,
   "capacity": 10,
 
-  "whitelist": ["98072d27a984", "c4be8471a302"],
+  "whitelist": ["c4be8471a302", "98072d3b1a82"],
 
   "http": {
     "https": false,
@@ -37,6 +37,10 @@
       "pressure": {
         "enabled": false,
         "period": 500
+      },
+      "temperature": {
+        "enabled": false,
+        "period": 100
       },
       "movement": {
         "enabled": true,

@@ -125,7 +125,7 @@ function MqttClient(deviceStore, config) {
         let euler;
         let quat;
 
-        if (deviceId == "98072d27a984") {
+        if (deviceId == "98072d3b1a82") {
           if (lastTimestamp1 == null) {
             lastTimestamp1 = data.timestamp;
           }
